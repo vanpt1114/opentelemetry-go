@@ -16,6 +16,7 @@ package trace // import "go.opentelemetry.io/otel/sdk/trace"
 
 import (
 	"context"
+	"fmt"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -93,6 +94,7 @@ var _ SpanProcessor = (*batchSpanProcessor)(nil)
 //
 // If the exporter is nil, the span processor will perform no action.
 func NewBatchSpanProcessor(exporter SpanExporter, options ...BatchSpanProcessorOption) SpanProcessor {
+	fmt.Println("did i reach here")
 	maxQueueSize := env.BatchSpanProcessorMaxQueueSize(DefaultMaxQueueSize)
 	maxExportBatchSize := env.BatchSpanProcessorMaxExportBatchSize(DefaultMaxExportBatchSize)
 
